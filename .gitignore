@@ -1,0 +1,8 @@
+node_modules/
+out/
+.DS_Store
+__pycache__/
+# 動画に焼き込むフォント (scripts/setup-fonts.sh で取ってくる)
+public/fonts/*.ttf
+# 手元だけで使う素材 (再配布できない素材をここに置く。リポジトリには入れない)
+public/local/

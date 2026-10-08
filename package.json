@@ -1,0 +1,34 @@
+{
+  "name": "short-animation-harness",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "JSON の台本から短いアニメーション動画を書き出す、AI エージェント向けの最小のハーネス (Remotion + ffmpeg)",
+  "license": "MIT",
+  "scripts": {
+    "setup": "sh scripts/setup-fonts.sh && tsx scripts/build-assets.ts",
+    "assets": "tsx scripts/build-assets.ts",
+    "new": "tsx scripts/new.ts",
+    "check": "tsx scripts/check.ts",
+    "stills": "tsx scripts/stills.ts",
+    "render": "tsx scripts/render.ts",
+    "review": "tsx scripts/review.ts",
+    "studio": "remotion studio src/Root.tsx",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.533",
+    "@remotion/cli": "4.0.533",
+    "@remotion/renderer": "4.0.533",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "remotion": "4.0.533",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "@types/react": "^19.3.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}
