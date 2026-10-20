@@ -36,7 +36,9 @@ frames = frames.filter((f) => f >= 0 && f < timeline.frames);
 const { serveUrl, comp, inputProps } = await composition(raw);
 const browser = await openBrowser("chrome", { browserExecutable });
 const scale = timeline.width >= 1920 ? 0.4 : 0.5;
-const font = join(ROOT, "public/fonts/MPLUSRounded1c-ExtraBold.ttf");
+// ffmpeg のフィルタ文字列では `C:` のコロンがオプション区切りとして扱われるため、
+// cwd (npm scripts はリポジトリ直下) からの相対パスを使う
+const font = "public/fonts/MPLUSRounded1c-ExtraBold.ttf";
 for (const [i, f] of frames.entries()) {
   const png = join(dir, `${String(i).padStart(3, "0")}.png`);
   await renderStill({ serveUrl, composition: comp, inputProps, frame: Math.round(f * SUB), output: png, scale, puppeteerInstance: browser, logLevel: "error" });
