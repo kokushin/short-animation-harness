@@ -1,11 +1,12 @@
 // scripts/ の共通部品: 台本の読み込みと検証
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { ZodError } from "zod";
 import { EpisodeZ, type Episode } from "../src/episode/schema";
 import { resolveEpisode, type Timeline } from "../src/episode/resolve";
 
-export const ROOT = new URL("..", import.meta.url).pathname;
+export const ROOT = fileURLToPath(new URL("..", import.meta.url));
 
 export function episodeDir(slug: string) {
   return join(ROOT, "episodes", slug);

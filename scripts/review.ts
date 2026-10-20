@@ -24,7 +24,9 @@ mkdirSync(dir, { recursive: true });
 // 横長は 5x5 (1 コマ 384 px)、縦長は 8x3 (1 コマ 240 px)
 const long = timeline.width >= timeline.height;
 const [cols, rows, w] = long ? [5, 5, 384] : [8, 3, 240];
-const font = join(ROOT, "public/fonts/MPLUSRounded1c-ExtraBold.ttf");
+// ffmpeg のフィルタ文字列では `C:` のコロンがオプション区切りとして扱われるため、
+// cwd (npm scripts はリポジトリ直下) からの相対パスを使う
+const font = "public/fonts/MPLUSRounded1c-ExtraBold.ttf";
 const label = `drawtext=fontfile=${font}:text='%{pts\\:hms}':x=6:y=6:fontsize=${long ? 20 : 18}:fontcolor=yellow:box=1:boxcolor=black@0.6:boxborderw=4`;
 execFileSync("ffmpeg", [
   "-hide_banner", "-loglevel", "error", "-y",
